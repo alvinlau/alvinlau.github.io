@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alvin Lau — Communities &amp; Software</title>
+<meta name="description" content="Alvin Lau builds Discord communities and the software behind them. Discord server setup, app fixes and development, based in Richmond, BC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --text: #1b1d22;
+    --muted: #5b616e;
+    --line: #e3e1da;
+    --accent: #5865f2;
+    --accent-ink: #ffffff;
+    --accent-soft: #eceefe;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121317;
+      --surface: #1b1d23;
+      --text: #ecedf0;
+      --muted: #a3a8b3;
+      --line: #2c2f37;
+      --accent: #7c86ff;
+      --accent-ink: #0f1020;
+      --accent-soft: #23264a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { font-weight: 700; text-decoration: none; color: var(--text); }
+  nav a { color: var(--muted); text-decoration: none; margin-left: 20px; font-size: 15px; }
+  nav a:hover { color: var(--text); }
+
+  .hero { padding: 88px 0 64px; }
+  .eyebrow { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 12px; }
+  h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.1; margin: 0 0 18px; letter-spacing: -0.02em; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 640px; margin: 0 0 28px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 12px 20px; border-radius: 10px;
+    font-weight: 600; text-decoration: none; border: 1px solid var(--line);
+    color: var(--text); background: var(--surface);
+  }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 28px; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin: 0 0 28px; max-width: 640px; }
+
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 18px; }
+  .card p { margin: 0 0 12px; color: var(--muted); }
+  .card ul { margin: 0; padding-left: 18px; color: var(--muted); }
+  .card li { margin: 4px 0; }
+  .price { font-weight: 700; color: var(--text); font-size: 20px; margin: 4px 0 12px; }
+  .tag {
+    display: inline-block; font-size: 12px; font-weight: 600;
+    background: var(--accent-soft); color: var(--accent);
+    padding: 3px 9px; border-radius: 999px; margin-bottom: 10px;
+  }
+
+  .about { display: grid; gap: 28px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .about { grid-template-columns: 1.4fr 1fr; } }
+  .facts { list-style: none; padding: 0; margin: 0; }
+  .facts li { padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+  .facts strong { color: var(--text); }
+
+  .contact .btns { margin-top: 8px; }
+  footer { padding: 28px 0 40px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+
+  @media (max-width: 600px) {
+    nav a { margin-left: 14px; font-size: 14px; }
+    .hero { padding: 56px 0 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Alvin Lau</a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero"><div class="wrap">
+    <p class="eyebrow">Richmond, BC · Remote</p>
+    <h1>I build communities<br>and the software behind them.</h1>
+    <p class="lead">Discord servers that people actually stay in, and apps that actually ship. Twelve years across software engineering, QA and business analysis, now building with AI agents every day.</p>
+    <div class="btns">
+      <a class="btn primary" href="#discord">Discord setup</a>
+      <a class="btn" href="#dev">Development work</a>
+    </div>
+  </div></div>
+
+  <section id="services">
+    <div class="wrap">
+      <h2 id="discord">Discord server setup</h2>
+      <p class="sub">For creators, small brands, indie games and local events. You get a server that's organized, safe and easy to join, with channels built around reasons to come back, not just a place to drop links.</p>
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Starter</span>
+          <h3>Launch</h3>
+          <p class="price">Contact for pricing</p>
+          <ul>
+            <li>Channel and category structure</li>
+            <li>Roles and permissions</li>
+            <li>Welcome, rules and onboarding</li>
+            <li>Basic moderation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Standard</span>
+          <h3>Community</h3>
+          <p class="price">Contact for pricing</p>
+          <ul>
+            <li>Everything in Launch</li>
+            <li>Bots: stream alerts, tickets, auto-roles</li>
+            <li>Engagement rituals: spotlights, feedback threads, events</li>
+            <li>A short guide for your moderators</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Full build</span>
+          <h3>Creator hub</h3>
+          <p class="price">Contact for pricing</p>
+          <ul>
+            <li>Everything in Community</li>
+            <li>Supporter tiers linked to Ko-fi or Patreon</li>
+            <li>Custom bot commands where needed</li>
+            <li>Two weeks of tune-ups after launch</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="dev" style="margin-top:56px">Development work</h2>
+      <p class="sub">Backend-leaning full-stack engineering, with a tester's eye for what breaks.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Fix my AI-built app</h3>
+          <p>Half-working app from an AI builder? I'll debug it, get it deployed, and wire up payments and sign-in.</p>
+        </div>
+        <div class="card">
+          <h3>Integrations</h3>
+          <p>Payments, webhooks and third-party APIs: Stripe, Square, Discord and more.</p>
+        </div>
+        <div class="card">
+          <h3>Specs and technical analysis</h3>
+          <p>Requirements, API and system specs, and test plans that your team or your agents can build from.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <h2>Work</h2>
+      <p class="sub">Things I've built and shipped.</p>
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Showcase</span>
+          <h3>Coin Greeter</h3>
+          <p>An app built end to end with AI coding agents: I write the spec, agents build it, and I review, test and debug. Live demo and write-up coming soon.</p>
+        </div>
+        <div class="card">
+          <span class="tag">eBay</span>
+          <h3>Authentication analytics</h3>
+          <p>End-to-end reporting modules (ETL, Spring API, React frontend) for item authentication hubs worldwide.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Fintech</span>
+          <h3>Payments integrations</h3>
+          <p>Square POS integration for Kashoo's accounting app, and backend services for the MogoSpend Visa card.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2>About</h2>
+        <p class="sub" style="margin-bottom:0">I started in online communities back in the IRC days, spent five years in test automation, seven as a backend and full-stack engineer, and most recently worked as a business analyst at Deloitte. Outside work I compete in historical fencing and stream it on Twitch and YouTube.</p>
+      </div>
+      <ul class="facts">
+        <li><strong>12+ years</strong> in software</li>
+        <li><strong>Java, TypeScript, Ruby</strong>, REST, GraphQL, Kafka</li>
+        <li><strong>QA background:</strong> I test my own work</li>
+        <li><strong>Based in</strong> Richmond, BC</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Let's talk</h2>
+      <p class="sub">Tell me about your community or project, and I'll reply within a day.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:alvin.lau@live.ca?subject=Project%20enquiry">alvin.lau@live.ca</a>
+        <a class="btn" href="https://www.linkedin.com/in/alvinhylau" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/alvinlau" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Alvin Lau · Richmond, BC</div>
+</footer>
+
+</body>
+</html>
