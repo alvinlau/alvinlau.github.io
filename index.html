@@ -86,6 +86,10 @@
     padding: 3px 9px; border-radius: 999px; margin-bottom: 10px;
   }
 
+  .card.feature { grid-column: 1 / -1; }
+  .card.feature p { max-width: 720px; }
+  .card p.soon { margin: 16px 0 0; color: var(--accent); font-weight: 600; }
+
   .about { display: grid; gap: 28px; grid-template-columns: 1fr; }
   @media (min-width: 760px) { .about { grid-template-columns: 1.4fr 1fr; } }
   .facts { list-style: none; padding: 0; margin: 0; }
@@ -189,10 +193,17 @@
       <h2>Work</h2>
       <p class="sub">Things I've built and shipped.</p>
       <div class="grid">
-        <div class="card">
+        <div class="card feature">
           <span class="tag">Showcase</span>
           <h3>Coin Greeter</h3>
-          <p>An app built end to end with AI coding agents: I write the spec, agents build it, and I review, test and debug. Live demo and write-up coming soon.</p>
+          <p>Donation pages for creators, ready in seconds. Anyone can make a page without an account, add text, images and links, pick a theme, and share it. Creators sign in with a magic link to keep their pages, connect Ko-fi, and track donations from a dashboard.</p>
+          <p><strong>How it was built:</strong> end to end with AI coding agents. I wrote the spec and the architecture notes, the agents wrote the code, and I reviewed every change, tested it and debugged what broke. A Playwright end-to-end suite covers page creation, editing, access control, the public pages and the API, so each new feature is checked against the old ones.</p>
+          <ul>
+            <li>Next.js 16, React 19, TypeScript, tRPC, Tailwind</li>
+            <li>PostgreSQL with Prisma, Redis with BullMQ background workers</li>
+            <li>Auth.js magic-link sign-in, verified Ko-fi webhooks</li>
+          </ul>
+          <p class="soon">Live demo coming soon.</p>
         </div>
         <div class="card">
           <span class="tag">eBay</span>
