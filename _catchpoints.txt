@@ -1,0 +1,9 @@
+# Catchpoints: short URLs printed on calling cards.
+# Each line:  <slug>  <destination>
+#   slug        lowercase letters, digits, hyphens  -> served at alvinlau.ca/c/<slug>
+#   destination https://... URL, or a site path starting with /
+# '#' at line start or after a space starts a comment (URL #fragments are fine). Pages under c/ are generated from this
+# file by _tools/build-catchpoints.sh (CI runs it on push to main).
+
+card    /card
+uptime  /card   # TODO: replace with the Etsy listing URL

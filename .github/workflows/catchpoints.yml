@@ -1,0 +1,32 @@
+name: Build catchpoints
+
+# Regenerates c/<slug>/ redirect pages whenever _catchpoints.txt changes on
+# main, and commits the result so GitHub Pages serves it.
+on:
+  push:
+    branches: [main]
+    paths:
+      - _catchpoints.txt
+      - _tools/build-catchpoints.sh
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sh _tools/build-catchpoints.sh
+      - name: Commit generated pages
+        run: |
+          git add -A c
+          if git diff --cached --quiet; then
+            echo "c/ already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Regenerate catchpoint pages"
+          git push
